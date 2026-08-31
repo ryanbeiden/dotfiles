@@ -139,7 +139,10 @@ artifacts() {
 }
 
 eval "$(starship init zsh)"
-eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# OS-specific evals
+[[ -x /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+[[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export EDITOR="nvim"
 export VISUAL="nvim"
