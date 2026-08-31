@@ -1,0 +1,7 @@
+bat
+coreutils
+fd
+starship
+vivid
+zsh-syntax-highlighting
+zsh-autosuggestions

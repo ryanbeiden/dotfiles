@@ -84,6 +84,9 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
 
+# Append local config if there is one
+[[ -f "$HOME/.config/zsh/local.zsh" ]] && source "$HOME/.config/zsh/local.zsh"
+
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
 # users are encouraged to define aliases within a top-level file in
@@ -92,11 +95,17 @@ source $ZSH/oh-my-zsh.sh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 
+# ------------------
+# Aliases
+# ------------------
+
 alias vim="nvim"
 
 # ZSH
 alias zc="nvim ~/.zshrc"
 alias sz="source ~/.zshrc"
+
+# Tinker
 alias tinker='nocorrect ./artisan tinker'
 
 # tmux
@@ -122,10 +131,12 @@ alias artifacts-generate="npx @openapitools/openapi-generator-cli generate \
     -o . \
     -c openapi-config.json"
 
-# Append local config if there is one
-[[ -f "$HOME/.config/zsh/local.zsh" ]] && source "$HOME/.config/zsh/local.zsh"
+alias ls='gls --color=auto'
+alias cat='bat'
 
+# ----------------
 # Functions
+# ----------------
 
 # Make the console command "artifacts" for the Artifacts directory
 artifacts() {
@@ -138,7 +149,21 @@ artifacts() {
   fi
 }
 
+dot() {
+  local file
+  file=$(find ~/dotfiles -type f \
+    -not -path "*/.git/*" \
+    | fzf --height=40% --border --prompt="Edit dotfile: " \
+          --preview 'bat --color=always --style=numbers {} 2>/dev/null || cat {}')
+  [[ -n "$file" ]] && "$EDITOR" "$file"
+}
+
+# Starship
 eval "$(starship init zsh)"
+
+# Overwrite Starship's cursor control right after it draws the prompt
+_fix_cursor() { echo -ne '\e[1 q'; }
+precmd_functions+=(_fix_cursor)
 
 # OS-specific evals
 [[ -x /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -147,8 +172,7 @@ eval "$(starship init zsh)"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
-# Redis
-export PATH=$(brew --prefix)/bin:$PATH
+export BAT_THEME="Catppuccin Mocha"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -156,5 +180,10 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PHP_EXTRA_CONFIGURE_OPTIONS="--with-iconv=$(brew --prefix libiconv)"
 
+export LS_COLORS="$(vivid generate catppuccin-mocha-custom)"
+
 eval "$(mise activate zsh)"
+
+source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 

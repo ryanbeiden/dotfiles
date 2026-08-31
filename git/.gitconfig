@@ -1,0 +1,26 @@
+[user]
+    name = Ryan Beiden
+    email = ryanbeiden@pm.me
+[core]
+    editor = nvim
+[color]
+    ui = auto
+
+[color "branch"]
+    current = "#cba6f7 bold"
+    local = "#a6e3a1"
+    remote = "#89b4fa"
+
+[color "diff"]
+    meta = "#cba6f7 bold"
+    old = "#f38ba8"
+    new = "#a6e3a1"
+    frag = "#b4befe bold"
+
+[color "status"]
+    added = "#a6e3a1"
+    updated = "#f9e2af"
+    changed = "#f9e2af"
+    untracked = "#f38ba8"
+    branch = "#74c7ec"
+
