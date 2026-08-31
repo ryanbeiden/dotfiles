@@ -1,0 +1,11 @@
+[tools]
+node = "latest"
+php = "latest"
+pi = "latest"
+yarn = "latest"
+pnpm = "latest"
+
+[settings]
+auto_install = true
+color = true
+color_theme = "catppuccin"

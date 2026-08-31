@@ -1,0 +1,73 @@
+# Disable the blank line at the start of the prompt
+
+add_newline = false
+
+# Hides Username all the time
+
+[username]
+show_always = false
+
+# Disables Orange Package Number
+
+[package]
+disabled = true
+
+# Disable Vagrant version
+
+[vagrant]
+disabled = true
+
+# Disable PHP version
+
+[php]
+disabled = true
+
+# Disable node,js version
+
+[nodejs]
+disabled = true
+
+# Git Branch Styling
+
+[git_branch]
+symbol = ""
+format = "on [$symbol$branch]($style)"
+
+# Git Status
+
+[git_status]
+untracked = '[\[$count\]](bold red)'
+modified = '[\[$count\]](bold yellow)'
+staged = '[\[$count\]](bold green)'
+format = ' $all_status $ahead_behind'
+stashed = ''
+behind = '[\[⇣\]](bold yellow)'
+ahead = '[\[⇡\]](bold yellow)'
+up_to_date ='[•](bold green)'
+diverged = '[\[⇕\]](bold red)'
+
+# Directory Changes
+
+[directory]
+truncation_length = 30
+truncate_to_repo = false
+
+# Character Changes
+
+[character]
+success_symbol = '[> ](bold green)'
+error_symbol = '[✗ ](bold red)'
+format = '$symbol'
+
+# Command Duration
+
+[cmd_duration]
+disabled = true
+
+# Battery
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
+
