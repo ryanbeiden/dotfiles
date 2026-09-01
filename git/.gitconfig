@@ -1,8 +1,10 @@
 [user]
     name = Ryan Beiden
     email = ryanbeiden@pm.me
+
 [core]
     editor = nvim
+
 [color]
     ui = auto
 
@@ -48,11 +50,12 @@
 
 [color "blame"]
     highlightRecent = "#f38ba8,1 day ago,#fab387,1 week ago,#f9e2af,1 month ago,#a6e3a1"
-    # red (today) -> peach (1wk) -> yellow (1mo) -> green (older)
 
 [color "interactive"]
     prompt = "#89dceb bold"     # sky
     header = "#9399b2"          # overlay2
     help = "#6c7086"            # overlay0
-  error = "#f38ba8 bold"      # red
+    error = "#f38ba8 bold"      # red
 
+[push]
+    autoSetupRemote = true
