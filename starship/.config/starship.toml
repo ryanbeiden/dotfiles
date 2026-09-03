@@ -11,7 +11,7 @@ $c\
 $rust\
 $golang\
 $nodejs\
-$php\
+${custom.php}\
 $java\
 $kotlin\
 $haskell\
@@ -70,6 +70,7 @@ truncation_symbol = "…/"
 "Pictures" = " "
 "workspace" = "󰲋 "
 "dotfiles" = " "
+"backups" = " "
 
 # Git Branch Styling
 
@@ -85,10 +86,10 @@ modified = '[\[$count\]](fg:yellow)'
 staged = '[\[$count\]](fg:green)'
 stashed = '[\[${count}\]](fg:blue)'
 format = '$all_status $ahead_behind'
-behind = '[\[⇣\] ](fg:yellow)'
-ahead = '[\[⇡\] ](fg:yellow)'
-up_to_date ='[• ](fg:green)'
-diverged = '[\[⇕\ ]](fg:red)'
+behind = '[\[\]](fg:yellow)'
+ahead = '[\[\]](fg:yellow)'
+up_to_date ='[  ](fg:green)'
+diverged = '[\[\]](fg:red)'
 
 [nodejs]
 symbol = ""
@@ -111,9 +112,15 @@ style = "bg:green"
 format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
 
 [php]
+disabled = true
+
+[custom.php]
+command = "mise current php 2>/dev/null"
+detect_files = ["composer.json", ".php-version"]
+detect_extensions = ["php"]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version)](fg:crust bg:green)]($style)'
+format = '[[ $symbol( $output)](fg:crust bg:green)]($style)'
 
 [java]
 symbol = " "
@@ -166,7 +173,7 @@ vimcmd_visual_symbol = '[](bold fg:yellow)'
 
 [cmd_duration]
 show_milliseconds = false
-format = " in $duration "
+format = " in $duration "
 style = "bg:lavender"
 disabled = false
 show_notifications = true
