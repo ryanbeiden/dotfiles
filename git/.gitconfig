@@ -27,7 +27,7 @@
 
 [color "status"]
     added = "#a6e3a1"           # green
-    updated = "#f9e2af"         # yellow
+    updated = "#a6e3a1"         # green
     changed = "#f9e2af"         # yellow
     untracked = "#f38ba8"       # red
     branch = "#74c7ec"          # sapphire

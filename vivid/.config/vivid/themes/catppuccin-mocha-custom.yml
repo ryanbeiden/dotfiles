@@ -37,7 +37,7 @@ core:
   reset_to_normal: {}
 
   directory:
-    foreground: sapphire
+    foreground: blue
 
   symlink:
     foreground: pink
@@ -57,7 +57,7 @@ core:
     background: pink
 
   block_device:
-    foreground: sapphire
+    foreground: sky
     background: surface0
 
   character_device:

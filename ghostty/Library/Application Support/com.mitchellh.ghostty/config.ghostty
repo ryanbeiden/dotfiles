@@ -19,10 +19,21 @@ window-padding-y = 5
 # Theme
 
 theme = Catppuccin Mocha
-# background = #212121
-# foreground = #f8f8f2
+
+# Catppuccin Mocha Accent Colors
+palette = 16=#f5e0dc
+palette = 17=#f2cdcd
+palette = 18=#cba6f7
+palette = 19=#eba0ac
+palette = 20=#fab387
+palette = 21=#89dceb
+palette = 22=#74c7ec
+palette = 23=#b4befe
 
 # Font
 
 font-family = "JetBrainsMono Nerd Font"
-font-size = 14
+font-family-bold = "JetBrainsMono NFM Bold"
+font-family-italic = "JetBrainsMono NFM Italic"
+font-family-bold-italic = "JetBrainsMono NFM Bold Italic"
+font-size = 15

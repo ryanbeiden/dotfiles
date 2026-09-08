@@ -1,12 +1,18 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[](red)\
-$os\
 $username\
-[](bg:lavender fg:red)\
 $directory\
-[](bg:green fg:lavender)\
+
+$git_branch\
+$git_commit\
+$git_status\
+
+$fill\
+$time\
+$cmd_duration\
+$fill\
+
 $c\
 $rust\
 $golang\
@@ -16,59 +22,34 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[ ](fg:green)\
-$git_branch\
-$git_status\
-$cmd_duration\
-$line_break$character"""
+
+$line_break\
+$character
+"""
 
 palette = 'catppuccin_mocha'
 
 add_newline = true 
 
-[os]
-disabled = false
-style = "bg:red fg:crust"
-
-[os.symbols]
-Windows = ""
-Ubuntu = "󰕈"
-SUSE = ""
-Raspbian = "󰐿"
-Mint = "󰣭"
-Macos = "󰀵"
-Manjaro = ""
-Linux = "󰌽"
-Gentoo = "󰣨"
-Fedora = "󰣛"
-Alpine = ""
-Amazon = ""
-Android = ""
-Arch = "󰣇"
-Artix = "󰣇"
-CentOS = ""
-Debian = "󰣚"
-Redhat = "󱄛"
-RedHatEnterprise = "󱄛"
+[fill]
+symbol = "-"
 
 [username]
 show_always = true
-style_user = "bg:red fg:crust"
-style_root = "bg:red fg:crust"
-format = '[ $user ]($style)'
+style_user = "fg:overlay1"
+style_root = "fg:red"
+format = '[\[$user\] ]($style)'
 
 [directory]
-style = "bg:lavender fg:crust"
-format = "[ $path ]($style)"
+style = "fg:blue"
+format = "[$path ]($style)"
 truncation_length = 3
-truncation_symbol = "…/"
+truncation_symbol = ""
 
 [directory.substitutions]
 "Documents" = "󰈙 "
 "Downloads" = " "
-"Music" = "󰝚 "
-"Pictures" = " "
-"workspace" = "󰲋 "
+"workspace" = " "
 "dotfiles" = " "
 "backups" = " "
 
@@ -76,7 +57,7 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-format = "[[ $symbol $branch ](fg:sapphire)]($style)"
+format = "on [[$symbol $branch ](fg:mauve)]($style)"
 
 # Git Status
 
@@ -84,32 +65,37 @@ format = "[[ $symbol $branch ](fg:sapphire)]($style)"
 untracked = '[\[$count\]](fg:red)'
 modified = '[\[$count\]](fg:yellow)'
 staged = '[\[$count\]](fg:green)'
-stashed = '[\[${count}\]](fg:blue)'
-format = '$all_status $ahead_behind'
+stashed = '[\[${count}\]](fg:text)'
+format = '$all_status $ahead_behind '
 behind = '[\[\]](fg:yellow)'
 ahead = '[\[\]](fg:yellow)'
-up_to_date ='[  ](fg:green)'
+up_to_date ='[](fg:green)'
 diverged = '[\[\]](fg:red)'
+
+[git_commit]
+format = '[\($hash\)](fg:green)[ $tag ](fg:peach)'
+tag_disabled = false
+tag_symbol = ""
 
 [nodejs]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+style = "fg:crust bg:green"
+format = '[ $symbol $version ]($style)'
 
 [c]
-symbol = " "
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+symbol = ""
+style = "fg:crust bg:green"
+format = '[ $symbol $version ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+style = "fg:crust bg:green"
+format = '[ $symbol $version ]($style)'
 
 [golang]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+style = "fg:crust bg:green"
+format = '[ $symbol $version) ]($style)'
 
 [php]
 disabled = true
@@ -119,45 +105,44 @@ command = "mise current php 2>/dev/null"
 detect_files = ["composer.json", ".php-version"]
 detect_extensions = ["php"]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $output)](fg:crust bg:green)]($style)'
+style = "fg:crust bg:green"
+format = '[ $symbol $output ]($style)'
 
 [java]
 symbol = " "
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+style = "fg:crust bg:green"
+format = '[ $symbol $version ]($style)'
 
 [kotlin]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+style = "fg:crust bg:green"
+format = '[ $symbol $version ]($style)'
 
 [haskell]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+style = "fg:crust bg:green"
+format = '[ $symbol $version ]($style)'
 
 [python]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:green)]($style)'
+style = "fg:crust bg:green"
+format = '[ $symbol $version (\(#$virtualenv\)) ]($style)'
 
 [docker_context]
 symbol = ""
-style = "bg:sapphire"
-format = '[[ $symbol( $context) ](fg:crust bg:sapphire)]($style)'
+style = "fg:crust bg:green"
+format = '[ $symbol $context) ]($style)'
 
 [conda]
-symbol = "  "
-style = "fg:crust bg:sapphire"
-format = '[$symbol$environment ]($style)'
+symbol = ""
+style = "fg:crust bg:green"
+format = '[ $symbol$environment ]($style)'
 ignore_base = false
 
 [time]
-disabled = true 
-time_format = "%R"
-style = "bg:lavender"
-format = '[[  $time ](fg:crust bg:lavender)]($style)'
+disabled = false
+time_format = "%-I:%M%P"
+format = " $time "
 
 [line_break]
 disabled = false
@@ -173,10 +158,9 @@ vimcmd_visual_symbol = '[](bold fg:yellow)'
 
 [cmd_duration]
 show_milliseconds = false
-format = "  in $duration "
-style = "bg:lavender"
+format = '[\(took $duration\)](fg:yellow) '
 disabled = false
-show_notifications = true
+show_notifications = false
 min_time_to_notify = 45000
 
 [palettes.catppuccin_mocha]
