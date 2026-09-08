@@ -67,10 +67,10 @@ modified = '[\[$count\]](fg:yellow)'
 staged = '[\[$count\]](fg:green)'
 stashed = '[\[${count}\]](fg:text)'
 format = '$all_status $ahead_behind'
-behind = '[\[\]](fg:yellow)'
-ahead = '[\[\]](fg:yellow)'
+behind = '[\[\ ]](fg:yellow)'
+ahead = '[\[\ ]](fg:yellow)'
 up_to_date ='[ ](fg:green)'
-diverged = '[\[\]](fg:red)'
+diverged = '[\[\ ]](fg:red)'
 
 [git_commit]
 format = '[\($hash\)](fg:green)[ $tag ](fg:peach)'
